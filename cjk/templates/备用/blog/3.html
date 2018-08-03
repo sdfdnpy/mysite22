@@ -1,0 +1,36 @@
+{%  extends '56.html' %}
+    
+   {#页面标题 #}
+
+  {% block a %}
+
+我的风水网站
+
+
+{% endblock %}
+    
+    
+
+    
+
+
+
+{# 页面内容 #}
+
+
+
+{%  block b %}
+
+{% for  a in  ff %}
+
+    <a href="{% url 'b' %}">
+        <h2>{{ a.title }}</h2></a>
+<p>{{ a.content}}</p>
+{% empty  %}
+<p>--暂无文章发表 敬请期待--</p>
+
+{% endfor %}
+<p>一共有{{ff|length}}篇博客</p>
+
+
+{% endblock %}

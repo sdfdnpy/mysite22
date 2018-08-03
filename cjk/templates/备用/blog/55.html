@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>{{n.type_name}}</title>
+</head>
+<body>
+
+<div>
+    <a href="/">
+    <h1>友贤风水博客网站</h1>
+    </a>
+
+
+
+
+
+</div>
+  <hr>
+<h1>{{n.type_name}} </h1>
+
+
+
+{% for  a in  ff %}
+
+    <a href="{% url 'b' %}">
+        <h2>{{ a.title }}</h2></a>
+<p>{{ a.content}}</p>
+{% empty  %}
+<p>--暂无文章发表 敬请期待--</p>
+
+{% endfor %}
+<p>一共有{{ff|length}}篇博客</p>
+</body>
+</html>

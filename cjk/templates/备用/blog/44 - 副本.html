@@ -1,0 +1,81 @@
+{%  extends '56.html' %}
+
+   {#页面标题 #}
+
+  {% block a %}
+
+博客内容
+
+
+{% endblock %}
+
+
+
+
+
+
+
+{# 页面内容 #}
+
+
+
+{%  block b %}
+
+{% for  a in  ff %}
+
+    <h2>{{ a.title }}</h2>
+      <h2>发表日期：{{ a.pub_date|date:'y-m-d '}}</h2>
+<h5>分类：<a  href="pass">{{a.blog_type}}</a></h5>
+
+    <h4>文章内容：{{ a.content|truncatewords:'4 '}}</h4>
+
+    <hr>
+
+{% endfor %}
+
+  <div class="container">
+
+    <ul>
+       
+        {% for b in blog_list %}
+           {# 打印blog 标题 #}
+            <li>{{ b.title }} </li>
+        {% endfor %}
+    </ul>
+    <ul class="pagination" id="pager">
+        {#上一页按钮开始#}
+        {# 如果当前页有上一页#}
+        {% if blog_list.has_previous %}
+            {#  当前页的上一页按钮正常使用#}
+            <li class="previous"><a href="/}">上一页</a></li>
+        {% else %}
+            {# 当前页的不存在上一页时,上一页的按钮不可用#}
+            <li class="previous disabled"><a href="#">上一页</a></li>
+        {% endif %}
+        {#上一页按钮结束#}
+        {# 页码开始#}
+        {% for num in paginator.page_range %}
+
+            {% if num == currentPage %}
+                <li class="item active"><a href="/?page={{ num }}">{{ num }}</a></li>
+            {% else %}
+                <li class="item"><a href="/?page={{ num }}">{{ num }}</a></li>
+
+            {% endif %}
+        {% endfor %}
+        {#页码结束#}
+        {# 下一页按钮开始#}
+        {% if book_list.has_next %}
+            <li class="next"><a href="/?page={{blog_list.next_page_number }}">下一页</a></li>
+        {% else %}
+            <li class="next disabled"><a href="#">下一页</a></li>
+        {% endif %}
+        {# 下一页按钮结束#}
+    </ul>
+{% endblock %}
+
+
+
+
+
+
